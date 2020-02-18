@@ -71,6 +71,30 @@ class Money:
         return (type(self) == type(other) and self.amount == other.amount and
                 self.currency == other.currency)
 
+    def __add__(self, other):
+        return self.add(other)
+
+    def __sub__(self, other):
+        return self.sub(other)
+
+    def __mul__(self, multiplier):
+        return self.mul(multiplier)
+
+    def __rmul__(self, multiplier):
+        return self.mul(multiplier)
+
+    def __truediv__(self, divisor):
+        if divisor != 0:
+            return Money(self.amount / divisor, self.currency)
+        else:
+            print('Cannot divide by 0')
+
+    # def __rdiv__(self, divisor):
+    #     if divisor != 0:
+    #         return Money(self.amount / divisor, self.currency)
+    #     else:
+    #         print('Cannot divide by 0')
+
     def add(self, other):
         """
         Add two money objects of the same currency. If they have different
@@ -101,5 +125,7 @@ class Money:
         """
         Divide a money object by a number to get a new money object.
         """
-        return Money(self.amount / divisor, self.currency)
-
+        if divisor != 0:
+            return Money(self.amount / divisor, self.currency)
+        else:
+            print('Cannot divide by 0')
