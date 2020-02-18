@@ -89,12 +89,6 @@ class Money:
         else:
             print('Cannot divide by 0')
 
-    # def __rdiv__(self, divisor):
-    #     if divisor != 0:
-    #         return Money(self.amount / divisor, self.currency)
-    #     else:
-    #         print('Cannot divide by 0')
-
     def add(self, other):
         """
         Add two money objects of the same currency. If they have different
